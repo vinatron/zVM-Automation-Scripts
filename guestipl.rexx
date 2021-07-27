@@ -34,6 +34,8 @@ ALLGUESTSIPL:                                 /* BEGINING OF SUB */
  LINENO = 1                                   /* SET LINE AT TOP */
  DO UNTIL LINES(GUESTS LIST A) = 0            /* LIST LINES */
   USERID = LINEIN(GUESTS LIST A)              /* PULL LINE VALUE */
+  SAY 'FORWARDING MESSAGES FOR GUEST' USERID  /* NOTIFY USER */           
+  'CP SET OBSERVER' USERID '*'                /* FORWARD LOG MSG */       
   SAY 'PERFORMING IPL FOR GUEST' USERID       /* NOTIFY USER */
   'CP XAUTOLOG' USERID                        /* AUTOLOG VAR USERID */
   SAY 'IPL FOR' USERID 'COMPLETE'             /* NOTIFY USER */
@@ -51,6 +53,8 @@ GUESTIPL:
   SAY 'DO YOU WANT TO IPL GUEST' USERID 'Y/N' /* REQUEST INPUT */
   PULL ANSWER3                                /* STORE RESPONCE */
   IF ANSWER3 = 'Y' THEN DO                    /* CHECK CONDITONAL 1 */
+   SAY 'FORWARDING MESSAGES FOR GUEST' USERID /* NOTIFY USER */           
+   'CP SET OBSERVER' USERID '*'               /* FORWARD LOG MSG */       
    SAY 'PERFORMING IPL FOR GUEST' USERID      /* NOTIFY USER */
    'CP XAUTOLOG' USERID                       /* AUTOLOG VAR USERID */
    SAY 'IPL FOR' USERID 'COMPLETE'            /* NOTIFY USER */
