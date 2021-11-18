@@ -47,7 +47,6 @@ STARTUR:                                      /* BEGINING OF SUB */
  END                                          /* END LIST LINES */
 RETURN                                        /* END OF SUB */
 
-
 /*******************************************************/
 /* ERROR HANDLER: COMMON EXIT FOR NONZERO RETURN CODES */
 /*******************************************************/
