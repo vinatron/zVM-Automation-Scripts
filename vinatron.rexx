@@ -14,10 +14,8 @@ SAY 'PLEASE WAIT....'                        /* NOTIFY OPERATOR */
 
 SIGNAL ON ERROR                              /* TEST RC OF COMMANDS */
 
-'CP START 00C'                               /* START READER */
-'CP START 00D FORM * CLASS D'                /* START PUNCH CLASS D */
-'CP START 00E FORM * CLASS A'                /* START PRT1 CLASS A */
-'CP START 00F FORM * CLASS PT'               /* START PRT2 CLASS PT */
+SAY 'STARTING UR DEVICES IN FILE URDEV LIST) /* NOTIFY OPERATOR */
+CALL STARTUR                                 /* CALL SUB */
 SAY 'ALL UNIT RECORD DEVICES STARTED'        /* NOTIFY OPERATOR */
 SAY 'ENABLING ALL CONSOLES'                  /* NOTIFY OPERATOR */
 'CP ENABLE ALL'                              /* ENABLE ALL CONSOLES */
@@ -34,6 +32,21 @@ END                                          /* END LIST LINES */
 SAY 'AUTOMATION COMPLETE!'                   /* BANNER START */
 SAY 'THANK YOU FOR USING OUR PRODUCT!'       /* BANNER END */
 EXIT                                         /* END OF PROGRAM */
+
+/********************************************
+* START ALL UR DEVICES                      *
+*********************************************/
+STARTUR:                                      /* BEGINING OF SUB */
+ LINENO = 1                                   /* SET LINE AT TOP */
+ DO UNTIL LINES(URDEV LIST A) = 0             /* LIST LINES */
+  URDEVADDR = LINEIN(URDEV LIST A)            /* PULL LINE VALUE */    
+  SAY 'STARTING UR DEVICE' URDEVADDR          /* NOTIFY USER */
+  'CP START' URDEVADDR                        /* AUTOLOG VAR USERID */
+  SAY 'UR DEVICE' URDEVADDR 'STARTED'         /* NOTIFY USER */
+  LINENO = LINENO + 1                         /* INCRIMENT LINE */
+ END                                          /* END LIST LINES */
+RETURN                                        /* END OF SUB */
+
 
 /*******************************************************/
 /* ERROR HANDLER: COMMON EXIT FOR NONZERO RETURN CODES */
