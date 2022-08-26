@@ -7,7 +7,7 @@
 TRACE E                                      /* ERROR TRACING */
 
 SAY "STARTING VINATRON'S SYSTEM AUTOMATION"  /* BANNER START */
-SAY 'PROPRETY OF:'                           /* BANNER */
+SAY 'PROPERTY OF:'                           /* BANNER */
 SAY 'VINATRON TECHNOLOGY AND ELECTRICAL'     /* BANNER END */
 SAY 'STARTING UNIT RECORD DEVICES:'          /* NOTIFY OPERATOR */
 SAY 'PLEASE WAIT....'                        /* NOTIFY OPERATOR */
