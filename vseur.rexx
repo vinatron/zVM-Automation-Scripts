@@ -1,6 +1,6 @@
 /******************************************************
 *        VSEUR EXEC WRITTEN BY VINCENT F. MANZO       *
-*                   AUGEST 24 2022                    *
+*                  DECEMBER 9 2022                    *
 * A PROGRAM FOR ASSISTING STARTING UR DEVICES FOR VSE *
 ******************************************************/
 
